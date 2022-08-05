@@ -1,5 +1,7 @@
 import csv
 import spacy
+
+assets = ['train', 'test']
 file =  open ('Train.csv')
 csvreader = csv.reader(file)
 header = []
@@ -14,10 +16,12 @@ for row in rows:
     text += row[1]
 text = text.replace("\n", " ")
 text = text.split(".")
-print(len(text))
-# nlp = spacy.load("en_core_web_sm")
-# text_length = len(text)
-# nlp.max_length =  text_length
-# print(text_length)
-# doc = nlp(text)
-# print("done")
+
+longest = 0
+print ( len(text) )
+
+for line in text:
+    if ( len(line) > longest ):
+        longest = len(line)
+
+print(longest)

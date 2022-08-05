@@ -1,0 +1,29 @@
+preprocess:
+  cmd: python -m spacy run preprocess
+  script:
+    - mkdir -p corpus/UD_English-EWT
+    - python -m spacy convert assets/UD_English-EWT/en_ewt-ud-train.conllu  corpus/UD_English-EWT/  --converter
+      conllu  --n-sents 10  --merge-subtokens
+    - python -m spacy convert  assets/UD_English-EWT/en_ewt-ud-dev.conllu  corpus/UD_English-EWT/  --converter
+      conllu  --n-sents 10  --merge-subtokens
+    - python -m spacy convert  assets/UD_English-EWT/en_ewt-ud-test.conllu corpus/UD_English-EWT/
+      --converter conllu  --n-sents 10  --merge-subtokens
+    - mv corpus/UD_English-EWT/en_ewt-ud-train.spacy corpus/UD_English-EWT/train.spacy
+    - mv corpus/UD_English-EWT/en_ewt-ud-dev.spacy corpus/UD_English-EWT/dev.spacy
+    - mv corpus/UD_English-EWT/en_ewt-ud-test.spacy corpus/UD_English-EWT/test.spacy
+  deps:
+    - path: assets/UD_English-EWT/en_ewt-ud-train.conllu
+      md5: c4804c006b9fafb0767ad64e3f02532c
+    - path: assets/UD_English-EWT/en_ewt-ud-dev.conllu
+      md5: 5e8aadd36a700d9fd807bfa3c6e7b665
+    - path: assets/UD_English-EWT/en_ewt-ud-test.conllu
+      md5: b77ee1064276453166d469f7af64102c
+  outs:
+    - path: corpus/UD_English-EWT/train.spacy
+      md5: 0f4c382d118e2bef57b3d21ab53b4793
+    - path: corpus/UD_English-EWT/dev.spacy
+      md5: 18ab14281cdbd2c05358ac7e5aded78e
+    - path: corpus/UD_English-EWT/test.spacy
+      md5: e17066909f30a31490be05077e3bfd64
+  spacy_version: 3.4.0
+  spacy_git_version: Unknown
