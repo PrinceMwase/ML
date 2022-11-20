@@ -1,15 +1,26 @@
 from eloquent import DatabaseManager, Model
 import csv
-import spacy
 
+
+# config = {
+#     "mysql": {
+#         "driver": "mysql",
+#         "host": "localhost",
+#         "database": "ml",
+#         "user": "admin",
+#         "password": "password",
+#         "prefix": "",
+#     }
+# }
+# PV2BJF9qc7ijhfu
 
 config = {
     "mysql": {
         "driver": "mysql",
-        "host": "localhost",
-        "database": "ml",
-        "user": "admin",
-        "password": "password",
+        "host": "sitbecmw.com",
+        "database": "sitbecmw_ml",
+        "user": "sitbecmw_ml",
+        "password": "PV2BJF9qc7ijhfu",
         "prefix": "",
     }
 }
@@ -22,7 +33,6 @@ file =  open ('Train.csv')
 csvreader = csv.reader(file)
 header = []
 header = next(csvreader)
-header
 rows = []
 for row in csvreader:
         rows.append(row)
@@ -46,7 +56,14 @@ class Token(Model):
     __timestamps__ = False
     pass
 
+counter = 1
+
 for line in texts:
+    if (counter < 99):
+        counter += 1
+        continue
+    if (counter > 199):
+        break
     index = 0
     line = line.strip()
     sentence = Sentence.create(sentence=line, source="cdd", progress="RAW")
@@ -60,7 +77,8 @@ for line in texts:
         )
         index += len(token)
 
-    
+    counter += 1
+    print(counter)
 
 
 # with open("sentences.txt", 'w') as f:
