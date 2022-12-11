@@ -58,43 +58,31 @@ class Token(Model):
 
 counter = 1
 
-for line in texts:
-    if (counter < 99):
+with db.transaction():
+    for line in texts:
+        if (counter < 201):
+            counter += 1
+            continue
+        if (counter > 400):
+            break
+        index = 0
+        line = line.strip()
+        sentence = Sentence.create(sentence=line, source="cdd", progress="RAW")
+        tokens = line.split(" ")
+        total = len(tokens)
+        for token in tokens:
+            Token.create(
+                token=token,
+                index=index,
+                sentenceId=sentence.id
+            )
+            index += len(token)
+
         counter += 1
-        continue
-    if (counter > 199):
-        break
-    index = 0
-    line = line.strip()
-    sentence = Sentence.create(sentence=line, source="cdd", progress="RAW")
-    tokens = line.split(" ")
-    total = len(tokens)
-    for token in tokens:
-        Token.create(
-            token=token,
-            index=index,
-            sentenceId=sentence.id
-        )
-        index += len(token)
-
-    counter += 1
-    print(counter)
+        print(counter)
 
 
-# with open("sentences.txt", 'w') as f:
-#     for line in texts:
-#         line = line.strip()
-
-#         Sentence.create(
-#             sentence=line,
-#             source="cdd",
-#             progress="RAW"
-#         )
-
-#         f.write(line)
-#         f.write('.\n')
 print("done")
-
 
 
 
