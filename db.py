@@ -1,7 +1,9 @@
+import os
 from eloquent import DatabaseManager, Model
+from dotenv import load_dotenv
 import csv
 
-
+load_dotenv() # take environment variables from .env.
 # config = {
 #     "mysql": {
 #         "driver": "mysql",
@@ -13,14 +15,14 @@ import csv
 #     }
 # }
 # PV2BJF9qc7ijhfu
-
+os.getenv
 config = {
     "mysql": {
-        "driver": "mysql",
-        "host": "sitbecmw.com",
-        "database": "sitbecmw_ml",
-        "user": "sitbecmw_ml",
-        "password": "PV2BJF9qc7ijhfu",
+        "driver": os.getenv("DRIVER", 'mysql'),
+        "host": os.getenv("HOST", 'localhost'),
+        "database": os.getenv("DATABASE", 'ml'),
+        "user": os.getenv("USER", 'ml'),
+        "password": os.getenv("PASSWORD", 'password'),
         "prefix": "",
     }
 }
@@ -60,10 +62,10 @@ counter = 1
 
 with db.transaction():
     for line in texts:
-        if (counter < 201):
+        if (counter < 400):
             counter += 1
             continue
-        if (counter > 400):
+        if (counter > 600):
             break
         index = 0
         line = line.strip()

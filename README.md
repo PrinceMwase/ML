@@ -22,3 +22,15 @@ Supervised learning can be used to train the model on the annotated corpus, usin
 Unsupervised learning can be used to train the model using techniques such as clustering or word embeddings.
 Transfer learning can be used to leverage pre-trained models or knowledge from other languages to improve the performance of the Chichewa model.
 Overall, the best tools and methodologies to use for developing a Chichewa parts of speech tagger will depend on the specific needs and goals of the project, as well as the resources and expertise available to the developers.
+
+## parsing and uploading data to the database
+
+create a `.env` file in the root directory following the structure of the `.env.example` file
+
+install dependancies using the requirements.txt file
+
+## Contributing
+
+clone this repo and create a pull request
+
+this repo needs a lot of contribution

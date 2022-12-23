@@ -1,12 +1,12 @@
 import csv
-import spacy
+
 
 assets = ['train', 'test']
 file =  open ('Train.csv')
 csvreader = csv.reader(file)
 header = []
 header = next(csvreader)
-header
+
 rows = []
 for row in csvreader:
         rows.append(row)
@@ -25,3 +25,5 @@ for line in text:
         longest = len(line)
 
 print(longest)
+
+# this code outputs the longest but you can do something else with it

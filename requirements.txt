@@ -1,0 +1,8 @@
+arrow==1.2.3
+eloquent==0.5
+inflection==0.5.1
+mysqlclient==2.1.1
+python-dateutil==2.8.2
+python-dotenv==0.21.0
+simplejson==3.17.6
+six==1.16.0
