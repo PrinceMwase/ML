@@ -62,22 +62,24 @@ counter = 1
 
 with db.transaction():
     for line in texts:
-        if (counter < 400):
+        if (counter < 902):
             counter += 1
             continue
-        if (counter > 600):
+        if (counter > 1600):
             break
         index = 0
         line = line.strip()
         sentence = Sentence.create(sentence=line, source="cdd", progress="RAW")
         tokens = line.split(" ")
         total = len(tokens)
+        
         for token in tokens:
-            Token.create(
+            tk = Token.create(
                 token=token,
                 index=index,
                 sentenceId=sentence.id
             )
+           
             index += len(token)
 
         counter += 1
