@@ -80,7 +80,7 @@ with db.transaction():
                 sentenceId=sentence.id
             )
            
-            index += len(token)
+            index += len(token) + 1
 
         counter += 1
         print(counter)
