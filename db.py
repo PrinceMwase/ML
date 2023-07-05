@@ -62,10 +62,10 @@ counter = 1
 
 with db.transaction():
     for line in texts:
-        if (counter < 1600):
+        if (counter < 1800):
             counter += 1
             continue
-        if (counter > 1800):
+        if (counter > 2200):
             break
         index = 0
         line = line.strip()
